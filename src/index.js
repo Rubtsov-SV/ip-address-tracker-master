@@ -1,4 +1,5 @@
-import {validatIp} from './helpers'
+import 'babel-polyfill'
+import {validatIp, getAddress} from './helpers'
 
 const ipInput = document.querySelector('.search-bar__input')
 const btn = document.querySelector('.search-bar__btn')
@@ -17,8 +18,7 @@ ipInput.addEventListener('keydown', headleKey)
 
 function getData() {
     if(validatIp(ipInput.value)) {
-        fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_73pMXJDR7CorsCxUElLBRrIALgVqH&ipAddress=${ipInput.value}`)
-            .then(response => response.json())
+        getAddress(ipInput.value)
             .then(data => setInfo(data))
     }
 }
@@ -33,7 +33,7 @@ function setInfo(mapData) {
     let lat = mapData.location.lat
     let lng = mapData.location.lng
     let coord = [lat, lng]
-    
+
     ipInfo.textContent = mapData.ip;
     locationInfo.textContent = `${mapData.location.country} ${mapData.location.region}`
     timezoneInfo.textContent = `UTC ${mapData.location.timezone}`

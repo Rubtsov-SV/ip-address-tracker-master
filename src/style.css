@@ -105,6 +105,12 @@
   .info__block:not(:last-child) {
     margin-bottom: 2.5rem;
   }
+
+  @media (max-width: 1024px) {
+    .info__block:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
   
   .info__block-subtitle {
     color: hsl(0, 0%, 59%);
@@ -113,6 +119,11 @@
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     letter-spacing: 0.3rem;
+  }
+  @media (max-width: 1024px) {
+    .info__block-subtitle {
+      margin-bottom: 0.5rem;
+    }
   }
   .info__block-title {
     color: hsl(0, 0%, 17%);
